@@ -15,10 +15,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import 'hammerjs';
 import { NavComponent } from './components/nav/nav.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { NoResultComponent } from './components/no-result/no-result.component';
+
+const appRoutes: Routes =[
+  { path: '', component: MainPageComponent},
+  { path: 'registration', component: RegistrationComponent},
+  { path: '**', component: NoResultComponent }
+];
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -31,6 +40,9 @@ import { NavComponent } from './components/nav/nav.component';
     BrowserAnimationsModule,
     CommonModule,
     RouterModule,
+    FormsModule,
+    RouterModule.forRoot(appRoutes),
+    MatFormFieldModule
   ],
   exports: [
     BrowserModule,
@@ -43,9 +55,10 @@ import { NavComponent } from './components/nav/nav.component';
     BrowserAnimationsModule,
     CommonModule,
     RouterModule,
+    MatFormFieldModule
   ],
   declarations: [AppComponent,
-    MainPageComponent, NavComponent],
+    MainPageComponent, NavComponent,NoResultComponent, RegistrationComponent],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
