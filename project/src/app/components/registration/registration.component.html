@@ -1,3 +1,8 @@
-<p>Registration</p>
-<input [formControl]="login">
-<input [formControl]="password">
+<div class="form-wrapper-reg">
+    <p class="reg-title">ВХІД ДО РЕЄСТРУ</p>
+    <form>
+        <input class="reg-input" [formControl]="login" placeholder="Логін" type="text">
+        <input class="reg-input" [formControl]="password" placeholder="Пароль" type="password">
+        <button mat-flat-button class="main-search-button">Увійти</button>
+    </form>
+</div>

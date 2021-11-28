@@ -17,15 +17,25 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
-import 'hammerjs';
+// import 'hammerjs';
 import { NavComponent } from './components/nav/nav.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { NoResultComponent } from './components/no-result/no-result.component';
+import { SearchComponent } from './components/search/search.component';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { RegisterPanelComponent } from './components/register-panel/register-panel.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const appRoutes: Routes =[
   { path: '', component: MainPageComponent},
-  { path: 'registration', component: RegistrationComponent},
-  { path: '**', component: NoResultComponent }
+  {path:'registration', component:RegistrationComponent},
+  { path: 'search', component: SearchComponent },
+  { path: '**', component: NoResultComponent },
+  { path: 'admin-panel', component: AdminPanelComponent},
+  { path: 'register-panel', component: RegisterPanelComponent},
+
+
 ];
 
 @NgModule({
@@ -37,12 +47,15 @@ const appRoutes: Routes =[
     MatButtonToggleModule,
     MatFormFieldModule,
     MatInputModule,
+    MatPaginatorModule,
     BrowserAnimationsModule,
     CommonModule,
     RouterModule,
     FormsModule,
     RouterModule.forRoot(appRoutes),
-    MatFormFieldModule
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     BrowserModule,
@@ -55,10 +68,14 @@ const appRoutes: Routes =[
     BrowserAnimationsModule,
     CommonModule,
     RouterModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatPaginatorModule
   ],
   declarations: [AppComponent,
-    MainPageComponent, NavComponent,NoResultComponent, RegistrationComponent],
+    MainPageComponent, NavComponent,NoResultComponent, RegistrationComponent, SearchComponent, ProfileComponent],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

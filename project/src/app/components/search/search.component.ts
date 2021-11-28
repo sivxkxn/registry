@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
+  paginationNumber = 1;
   constructor() { }
 
   ngOnInit(): void {

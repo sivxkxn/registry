@@ -1,3 +1,20 @@
 <div class="search-wrapper">
-    <p class="search-title">Пошук відомостей ув'язнених, та узятих під варту осіб</p>
+    <h2 class="search-title">ПОШУК ВІДОМОСТЕЙ ЗАСУДЖЕНИХ ТА ОСІБ, УЗЯТИХ ПІД ВАРТУ</h2>
+    <aside class="side-search-bar">
+        <form>
+            <input class="search-input" placeholder="Прізвище" type="text">
+            <input class="search-input" placeholder="Ім'я" type="text">
+            <input class="search-input" placeholder="По-батькові" type="text">
+            <input class="search-input" placeholder="Податковий номер" type="number">
+            <input class="search-input" placeholder="Номер реєстраційної книжки" type="number">
+            <button mat-flat-button class="search-button">Пошук</button>
+        </form>
+    </aside>
+    <div class="result-box">
     </div>
+    <mat-paginator [length]="100"
+              [pageSize]="10"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>
+</div>
