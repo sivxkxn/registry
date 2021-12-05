@@ -6,9 +6,12 @@
   line-height: 2.5rem;
   font-weight: 100;
   text-align:  center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   // margin: 15vh 0 3%;
-  width:60%;
-  // justify-content: ;
+  // width:60%;
+  margin: -5vh 20vw 2vh;
 }
 
 .search-title{
@@ -23,10 +26,13 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border: 2px solid #005bbb;
+    padding: 1.5vh 2vw;
+    border-radius: 10px;
     input {
       border: 1px solid black;
       width: 110%;
-      border-radius: 6px;
+      border-radius: 10px;
       height: 30px;
       margin: 3% 5%;
       color: black;
@@ -54,6 +60,8 @@
   justify-content: space-between;
   table {
     width: 100%;
-    flex-basis: 60%;
   }
+}
+.search-table{
+  width: 65vw;
 }

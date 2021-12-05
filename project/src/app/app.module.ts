@@ -36,6 +36,7 @@ const appRoutes: Routes =[
   { path: '**', component: NoResultComponent },
   { path: 'admin-panel', component: AdminPanelComponent},
   { path: 'register-panel', component: RegisterPanelComponent},
+  { path: `profile`, component: ProfileComponent},
 
 
 ];
