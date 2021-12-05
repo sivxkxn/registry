@@ -26,6 +26,8 @@ import { AdminPanelComponent } from './components/admin-panel/admin-panel.compon
 import { RegisterPanelComponent } from './components/register-panel/register-panel.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { ProfileComponent } from './components/profile/profile.component';
+import {MatTableModule} from '@angular/material/table';
+import { RegistratorHistoryComponent } from './components/registrator-history/registrator-history.component';
 
 const appRoutes: Routes =[
   { path: '', component: MainPageComponent},
@@ -55,7 +57,8 @@ const appRoutes: Routes =[
     RouterModule.forRoot(appRoutes),
     MatFormFieldModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule
   ],
   exports: [
     BrowserModule,
@@ -72,10 +75,11 @@ const appRoutes: Routes =[
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatTableModule
   ],
   declarations: [AppComponent,
-    MainPageComponent, NavComponent,NoResultComponent, RegistrationComponent, SearchComponent, ProfileComponent],
+    MainPageComponent, NavComponent,NoResultComponent, RegistrationComponent, SearchComponent, ProfileComponent, RegistratorHistoryComponent],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

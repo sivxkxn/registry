@@ -1,20 +1,36 @@
 <div class="search-wrapper">
     <h2 class="search-title">ПОШУК ВІДОМОСТЕЙ ЗАСУДЖЕНИХ ТА ОСІБ, УЗЯТИХ ПІД ВАРТУ</h2>
-    <aside class="side-search-bar">
-        <form>
-            <input class="search-input" placeholder="Прізвище" type="text">
-            <input class="search-input" placeholder="Ім'я" type="text">
-            <input class="search-input" placeholder="По-батькові" type="text">
-            <input class="search-input" placeholder="Податковий номер" type="number">
-            <input class="search-input" placeholder="Номер реєстраційної книжки" type="number">
-            <button mat-flat-button class="search-button">Пошук</button>
-        </form>
-    </aside>
-    <div class="result-box">
+    <div class="search-main">
+        <div class="side-search-bar">
+            <form>
+                <input class="search-input" placeholder="Прізвище" type="text">
+                <input class="search-input" placeholder="Ім'я" type="text">
+                <input class="search-input" placeholder="По-батькові" type="text">
+                <input class="search-input" placeholder="Податковий номер" type="number">
+                <input class="search-input" placeholder="Номер справи" type="number">
+                <button mat-flat-button class="search-button">Пошук</button>
+            </form>
+        </div>
+        <div class="result-box">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                <ng-container matColumnDef="taxCode">
+                    <th mat-header-cell *matHeaderCellDef> ІНН </th>
+                    <td mat-cell *matCellDef="let element"> {{element.taxCode}} </td>
+                </ng-container>
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef> Ім'я </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+                <ng-container matColumnDef="number">
+                    <th mat-header-cell *matHeaderCellDef> Номер справи </th>
+                    <td mat-cell *matCellDef="let element"> {{element.number}} </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[10]" aria-label="Select page">
+            </mat-paginator>
+        </div>
     </div>
-    <mat-paginator [length]="100"
-              [pageSize]="10"
-              [pageSizeOptions]="[5, 10, 25, 100]"
-              aria-label="Select page">
-</mat-paginator>
 </div>
