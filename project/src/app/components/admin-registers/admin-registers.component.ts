@@ -5,18 +5,13 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 
-export interface PeriodicElement {
-  taxNumber: string;
-  fullName: string;
-  caseNumber: string;
-}
-
 @Component({
-  selector: 'app-admin-panel',
-  templateUrl: './admin-panel.component.html',
-  styleUrls: ['./admin-panel.component.scss'],
+  selector: 'app-admin-registers',
+  templateUrl: './admin-registers.component.html',
+  styleUrls: ['./admin-registers.component.scss']
 })
-export class AdminPanelComponent implements OnInit {
+export class AdminRegistersComponent implements OnInit {
+
   public register: IUser = {
     id: 1,
     full_name: 'Василь Петрович Кулулініч',

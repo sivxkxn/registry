@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 
 
@@ -26,11 +27,27 @@ export class SearchComponent implements OnInit {
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
+  router!: Router;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
+  /** Whether the number of selected elements matches the total number of rows. */
+//   isAllSelected() {
+//   const numSelected = this.selection.selected.length;
+//   const numRows = this.dataSource.data.length;
+//   return numSelected == numRows;
+// }
 
+// /** Selects all rows if they are not all selected; otherwise clear selection. */
+//   masterToggle() {
+//   this.isAllSelected() ?
+//       this.selection.clear() :
+//       this.dataSource.data.forEach(row => this.selection.select(row));
+// }
+onToggle(){
+  this.router.navigate(['profile']);
+}
   constructor() { }
 
   ngOnInit(): void {

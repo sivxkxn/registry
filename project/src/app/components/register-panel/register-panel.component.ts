@@ -12,4 +12,7 @@ export class RegisterPanelComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSave(){
+    
+  }
 }

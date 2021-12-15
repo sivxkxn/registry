@@ -65,3 +65,9 @@
 .search-table{
   width: 65vw;
 }
+.search-row{
+  &:hover{
+    background-color: rgb(233, 233, 233);
+    cursor: pointer;
+  }
+}

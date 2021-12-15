@@ -1,25 +1,33 @@
-interface IUser {
+export interface IUser {
   id: number;
   full_name: string;
+  taxNumber: string;
   email: string;
   password: string;
-  role: RoleEnum;
+  role?: RoleEnum;
+  organization?: string;
+  isActive: Active;
 }
 
-interface IPrisoner {
+export interface IPrisoner {
   id: number;
   fullName: string;
   dateOfBirth: Date;
-  taxNumber: number;
-  registartionCode: number;
-  caseNumber: number;
-  reason: string;
+  taxNumber: string;
+  registartionCode: string;
+  caseNumber: string;
+  live: string;
+  gender: Gender;
   dateOfTrial: Date;
   from: Date;
   till: Date;
+  reason: string;
+  article: string;
+  trial: string;
+  benefits?: Benefits;
+  disease?: string;
 }
-
-interface IPrisonerLog {
+export interface IPrisonerLog {
   id: number;
   userId: number;
   prisonerId: number;
@@ -29,13 +37,27 @@ interface IPrisonerLog {
   newValue: string | number | Date;
 }
 
-enum RoleEnum {
+export enum RoleEnum {
   administrator = 'адміністратор',
   registrator = 'реєстратор',
 }
 
-enum ActionEnum {
+export enum Gender {
+  male = 'Чоловіча',
+  female = 'Жіноча',
+}
+
+export enum ActionEnum {
   create = 'створення',
   modifi = 'модифікація',
   delete = 'видалення',
+}
+
+export enum Benefits {
+  true = 'є',
+  false = 'немає',
+}
+export enum Active {
+  true = 'Активний',
+  false = 'Деактивований',
 }
