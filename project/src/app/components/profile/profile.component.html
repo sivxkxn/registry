@@ -1,2 +1,53 @@
-<h1>Відомості особи</h1>
-<button (click)="onToggle()"></button>
+<div class="profile-wrapper">
+    <h2>Відомості про засуджену особу</h2>
+    <div class="profile-main">
+        <div class="profile-column">
+            <p>Повне ім'я:</p>
+            <div class="profile-value">{{prisoner.fullName}}</div>
+            <p>Дата народження:</p>
+            <div class="profile-value">{{prisoner.dateOfBirth.toISOString().substr(0, 10)}}</div>
+
+            <p>ІНН</p>
+            <div class="profile-value">{{prisoner.taxNumber}}</div>
+
+            <p>Реєстраційний номер:</p>
+            <div class="profile-value">{{prisoner.registartionCode}}</div>
+
+            <p>Номер справи:</p>
+            <div class="profile-value">{{prisoner.caseNumber}}</div>
+        </div>
+        <div class="profile-column">
+            <p>Місце реєстрації:</p>
+            <div class="profile-value">{{prisoner.live}}</div>
+            <p>Стать</p>
+            <div class="profile-value">{{prisoner.gender}}</div>
+
+            <p>Дата винесення вироку:</p>
+            <div class="profile-value">{{prisoner.dateOfTrial.toISOString().substr(0, 10)}}</div>
+
+            <p>Дата початку покарання:</p>
+            <div class="profile-value">{{prisoner.from.toISOString().substr(0, 10)}}</div>
+
+            <p>Дата закінчення покарання:</p>
+            <div class="profile-value">{{prisoner.till.toISOString().substr(0, 10)}}</div>
+
+        </div>
+        <div class="profile-column">
+            <p>Причина ув'язнення:</p>
+            <div class="profile-value">{{prisoner.reason}}</div>
+
+            <p>стаття Кримінального кодексу:</p>
+            <div class="profile-value">{{prisoner.article}}</div>
+
+            <p>Орган, який здійснив вирок:</p>
+            <div class="profile-value">{{prisoner.trial}}</div>
+
+            <p>Пільги</p>
+            <div class="profile-value">{{prisoner.benefits}}</div>
+
+            <p>Захворювання:</p>
+            <div class="profile-value">{{prisoner.disease}}</div>
+
+        </div>
+    </div>
+</div>

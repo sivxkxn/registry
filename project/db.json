@@ -1,0 +1,45 @@
+{
+  "prisoners": [{
+    "id": 1,
+    "fullName": "Петро Іванович Катригін",
+    "dateOfBirth": "December 17, 1995",
+    "taxNumber": "7865439",
+    "registartionCode": "64839674",
+    "caseNumber": "56564523453",
+    "live": "Київ, Україна",
+    "gender": "Чоловічий",
+    "dateOfTrial": "December 30, 2019",
+    "from": "December 31, 2020",
+    "till": "December 31, 2021",
+    "reason": "Крадіжка грошей",
+    "article": "Стаття 185",
+    "trial": "Голосіївський суд міста Києва",
+    "benefits": "немає",
+    "disease": "немає"
+  }],
+  "registers":[{
+    "id": 1,
+    "fullName": "Василь Петрович Кулулініч",
+    "email": "kulinich@gmail.com",
+    "taxNumber": "768956789",
+    "password": "kul999",
+    "organization": "Vicikhovsky inc",
+    "isActive": "Активний"
+  }],
+  "administrator":[{
+    "id": 1,
+    "login": "julia",
+    "password": "123456"
+    }],
+    "prisonersLog":[{
+      "id": 1,
+      "registerName": "Василь Петрович Кулулініч",
+      "prisonerName": "Петро Іванович Катригін",
+      "type": "модифікація",
+      "date": "December 30, 2020",
+      "fieldName": "Стаття",
+      "oldValue": "185",
+      "newValue": "186"
+    }]
+  
+}

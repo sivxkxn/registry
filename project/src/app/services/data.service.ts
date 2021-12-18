@@ -1,26 +1,27 @@
 // import { writeJsonFile } from 'write-json-file';
-import * as fs from 'fs'
-
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 // const fs = require('fs');
 const path = require('path');
+const fs = require('fs');
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  constructor() {}
-  getAllPrisoners() {}
+  constructor(private http: HttpClient) {
+    this.getJSON().subscribe((data) => {
+      console.log(data);
+    });
+  }
 
-  // async write(filePath:string, objects:Array<Object>):Promise<any>{
-  //   await writeJsonFile( filePath, objects);
-  // }
-  readData(path: string, data: Array<Object>) {}
-  writeData(path: string, data: Array<Object>) {
-    let uri = "data:application/json;charset=UTF-8," + encodeURIComponent( JSON.stringify(data));
+  public getJSON(): Observable<any> {
+    return this.http.get('./assets/data/data.json');
+  }
+
+  public writeJSON(data:any): void {
+    fs.writeFileSync( path.resolve('./assets/data/data.json'), JSON.stringify(data));
   }
 }
-// let f=[{f:"fff"}, {h:12}];
-// let w =new DataService();
-// w.write('prisoners.json', f).then(()=>console.log('done'));

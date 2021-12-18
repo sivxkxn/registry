@@ -1,15 +1,7 @@
-import { Active, IUser } from 'src/interfaces';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
-
-export interface PeriodicElement {
-  taxNumber: string;
-  fullName: string;
-  caseNumber: string;
-}
+import { Active } from 'src/interfaces';
+import { IUser } from 'src/interfaces';
 
 @Component({
   selector: 'app-admin-panel',
@@ -17,42 +9,8 @@ export interface PeriodicElement {
   styleUrls: ['./admin-panel.component.scss'],
 })
 export class AdminPanelComponent implements OnInit {
-  public register: IUser = {
-    id: 1,
-    full_name: 'Василь Петрович Кулулініч',
-    email: 'kulinich@gmail.com',
-    taxNumber:'768956789',
-    password: 'kul999',
-    organization: 'Vicikhovsky inc',
-    isActive:Active.true
-  };
-  constructor() {}
-
-  ngOnInit(): void {}
-  public ELEMENT_DATA = [this.register];
-  displayedColumns: string[] = [
-    'fullName',
-    'email',
-    'taxNumber',
-    'password',
-    'organization',
-    'isActive'
-  ];
-  // displayedColumns: string[] =Object.keys(this.prisoner1);
-  dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
-
-  @ViewChild(MatPaginator)
-  paginator!: MatPaginator;
-  router!: Router;
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+  public isActive = Active;
+  ngOnInit(): void {
   }
-  // ngOnInit(): void {}
-  onDelete(register: IUser) {
-    // this.router.navigate(['profile']);
-  }
-  onEdit() {
-    // this.router.navigate(['register-edit']);
-  }
+  onSave() {}
 }

@@ -1,32 +1,32 @@
 <div class="registration-panel-wrapper">
-    <h2>Створити реєстратора</h2>
+    <h2>Редагувати данні реєстратора</h2>
     <div class="registration-panel-main">
         <div class="panel-column">
             <p>Повне ім'я</p>
-            <input type="text">
+            <input [value]="register.fullName" type="text">
 
             <p>ІНН</p>
-            <input type="text">
+            <input [value]="register.taxNumber" type="text">
 
             <p>Пошта</p>
-            <input type="text">
+            <input [value]="register.email" type="text">
 
 
         </div>
         <div class="panel-column">
             <p>Пароль</p>
-            <input type="text">
+            <input [value]="register.password" type="text">
 
             <p>Назва організації</p>
-            <input type="text">
+            <input [value]="register.organization" type="text">
 
             <p>Статус</p>
-            <input name="isActive" list="isActive">
+            <input [value]="register.isActive" name="isActive" list="isActive">
             <datalist id="isActive">
                 <option value={{isActive.true}}>
                 <option value={{isActive.false}}>
             </datalist>
         </div>
     </div>
-<button (click)="onSave()">Створити</button>
+<button (click)="onSave()">Зберігти</button>
 </div>

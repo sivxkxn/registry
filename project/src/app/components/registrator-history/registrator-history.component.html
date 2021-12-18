@@ -1,1 +1,56 @@
-<p>registrator-history works!</p>
+<h2 class="register-prisoner-title">Список засуджених осіб</h2>
+<div class="result-box">
+    <div class="mat-elevation-z8 search-table">
+        <table mat-table [dataSource]="dataSource">
+
+            <ng-container matColumnDef="registerName">
+                <th mat-header-cell *matHeaderCellDef> Ім'я реєстратора </th>
+                <td mat-cell *matCellDef="let logData"> {{logData.registerName}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="prisonerName">
+                <th mat-header-cell *matHeaderCellDef> Ім'я засудженої особи</th>
+                <td mat-cell *matCellDef="let logData"> {{logData.prisonerName}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="type">
+                <th mat-header-cell *matHeaderCellDef> Тип дії </th>
+                <td mat-cell *matCellDef="let logData"> {{logData.type}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef> Дата </th>
+                <td mat-cell *matCellDef="let logData"> {{logData.date}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="fieldName">
+                <th mat-header-cell *matHeaderCellDef> Назва поля </th>
+                <td mat-cell *matCellDef="let logData"> {{logData.fieldName}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="oldValue">
+                <th mat-header-cell *matHeaderCellDef>Старе значення </th>
+                <td mat-cell *matCellDef="let logData"> {{logData.oldValue}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="newValue">
+                <th mat-header-cell *matHeaderCellDef> Нове знячення </th>
+                <td mat-cell *matCellDef="let logData"> {{logData.newValue}} </td>
+            </ng-container>
+        
+        
+
+            <ng-container matColumnDef="buttons">
+                <th mat-header-cell *matHeaderCellDef> Дії</th>
+                <td mat-cell *matCellDef="let logData"> <button (click)="onDelete()" class="delete-btn">Видалити</button> <button (click)="onEdit()" class="edit-btn">Редагувати</button></td>
+                <!-- <button>Видалити</button> <button>Редагувати</button> -->
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row class="search-row" *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons aria-label="Обрати кількість елементів">
+        </mat-paginator>
+    </div>
+</div>

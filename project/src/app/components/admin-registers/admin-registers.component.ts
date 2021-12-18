@@ -14,7 +14,7 @@ export class AdminRegistersComponent implements OnInit {
 
   public register: IUser = {
     id: 1,
-    full_name: 'Василь Петрович Кулулініч',
+    fullName: 'Василь Петрович Кулулініч',
     email: 'kulinich@gmail.com',
     taxNumber:'768956789',
     password: 'kul999',
@@ -31,7 +31,8 @@ export class AdminRegistersComponent implements OnInit {
     'taxNumber',
     'password',
     'organization',
-    'isActive'
+    'isActive',
+    'buttons'
   ];
   // displayedColumns: string[] =Object.keys(this.prisoner1);
   dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);

@@ -1,6 +1,6 @@
 export interface IUser {
   id: number;
-  full_name: string;
+  fullName: string;
   taxNumber: string;
   email: string;
   password: string;
@@ -29,17 +29,18 @@ export interface IPrisoner {
 }
 export interface IPrisonerLog {
   id: number;
-  userId: number;
-  prisonerId: number;
+  registerName:string;
+  prisonerName: string;
   type: ActionEnum;
   date: Date;
-  oldValue: string | number | Date;
-  newValue: string | number | Date;
+  fieldName:string;
+  oldValue?: string | number | Date | null | undefined;
+  newValue?: string | number | Date | null | undefined;
 }
 
 export enum RoleEnum {
-  administrator = 'адміністратор',
-  registrator = 'реєстратор',
+  administrator = 'Адміністратор',
+  registrator = 'Реєстратор',
 }
 
 export enum Gender {
@@ -60,4 +61,23 @@ export enum Benefits {
 export enum Active {
   true = 'Активний',
   false = 'Деактивований',
+}
+
+export enum prisonerUkr {
+  id = 'Ідентифікатор',
+  fullName =  "Ім'я",
+  dateOfBirth =  'Дата народження',
+  taxNumber = 'ІНН',
+  registartionCode = 'Регістрацційний номер',
+  caseNumber = 'Номер справи',
+  live = 'Місце реєстрації',
+  gender = 'Стать',
+  dateOfTrial = 'Дата винесення вироку',
+  from = "Ув'язнанний з",
+  till = "Ув'язнаний до",
+  reason = 'Причнина',
+  article = 'Стаття',
+  trial = 'Орган, який виніс вирок',
+  benefits = 'Пільги',
+  disease = 'Хвороби'
 }
