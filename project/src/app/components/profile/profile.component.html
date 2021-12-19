@@ -1,5 +1,5 @@
 <div class="profile-wrapper">
-    <h2>Відомості про засуджену особу</h2>
+    <h2>Відомості про засуджену особу:</h2>
     <div class="profile-main">
         <div class="profile-column">
             <p>Повне ім'я:</p>
@@ -42,7 +42,7 @@
             <p>Орган, який здійснив вирок:</p>
             <div class="profile-value">{{prisoner.trial}}</div>
 
-            <p>Пільги</p>
+            <p>Пільги:</p>
             <div class="profile-value">{{prisoner.benefits}}</div>
 
             <p>Захворювання:</p>
@@ -50,4 +50,5 @@
 
         </div>
     </div>
+    <a class="profile-link" (click)="onToggle()"> Повернутись до пошуку</a>
 </div>

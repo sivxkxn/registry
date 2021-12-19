@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { GeneralService } from './services/general.service';
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { MainPageComponent } from './components/main-page/main-page.component';
@@ -71,7 +72,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   exports: [
     BrowserModule,
@@ -91,7 +92,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     MatTableModule,
     MatPaginatorModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   declarations: [
     AppComponent,
@@ -107,7 +108,8 @@ const appRoutes: Routes = [
     AdminRegistersComponent,
     AdminRegisterEditComponent,
   ],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent, [GeneralService]],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule {}
+export class AppModule {
+};

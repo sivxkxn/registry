@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 
-import { DataService } from 'src/app/services/data.service';
+import { GeneralService } from 'src/app/services/general.service';
+import { IPrisoner } from 'src/interfaces';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { PrisonerService } from 'src/app/services/prisoner.service';
@@ -8,54 +9,43 @@ import { Router } from '@angular/router';
 
 export interface PeriodicElement {
   taxNumber: number;
-  name: string;
+  fullName: string;
   caseNumber: number;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    taxNumber: 74366736254,
-    name: 'Іван Петрович Лужний',
-    caseNumber: 674623783,
-  },
-  {
-    taxNumber: 2492347857,
-    name: 'Артем Іванивич Прудніков',
-    caseNumber: 372642,
-  },
-  {
-    taxNumber: 6476257345,
-    name: 'Василь Семенович Ліхошва',
-    caseNumber: 82467326,
-  },
-];
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  displayedColumns: string[] = ['taxNumber', 'name', 'caseNumber'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  ELEMENT_DATA: Array<IPrisoner> = [];
+  displayedColumns: string[] = ['taxNumber', 'fullName', 'caseNumber'];
+  dataSource = new MatTableDataSource<IPrisoner>(this.ELEMENT_DATA);
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
-  router!: Router;
 
-  constructor(private prisonerService: PrisonerService) {}
-  obj = { h: 'hi' };
+  constructor(
+    private prisonerService: PrisonerService,
+    private router: Router,
+    private generalService: GeneralService
+  ) {}
   ngOnInit() {
     this.prisonerService.getPrisoners().subscribe((data) => {
-      console.log(data);
+      this.ELEMENT_DATA = data;
+      this.dataSource = new MatTableDataSource<IPrisoner>(this.ELEMENT_DATA);
+      this.dataSource.paginator = this.paginator;
     });
-    // this.dataService.writeJSON(this.obj);
   }
-  ngOnChange() {
-    // this.dataService.writeJSON(this.obj);
-  }
+  ngOnChange() {}
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
-  onToggle() {}
+  onToggle(obj: IPrisoner) {
+    console.log(obj);
+    this.generalService.setPrisoner(obj);
+    this.router.navigate(['/profile']);
+  }
 }

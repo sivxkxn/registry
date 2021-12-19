@@ -1,15 +1,16 @@
 import { Benefits, Gender, IPrisoner } from 'src/interfaces';
 import { Component, OnInit } from '@angular/core';
 
-import { DataService } from 'src/app/services/data.service';
+import { GeneralService } from 'src/app/services/general.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  public prisoner: IPrisoner = {
+  public prisoner1: IPrisoner = {
     id: 1,
     fullName: 'Петро Іванович Катригін',
     dateOfBirth: new Date('December 17, 1995'),
@@ -27,12 +28,26 @@ export class ProfileComponent implements OnInit {
     benefits: Benefits.false,
     disease: 'немає',
   };
-  constructor(private dataService:DataService) { }
+  constructor(
+    private router: Router,
+    private generalService: GeneralService
+  ) {}
+
+  prisoner: IPrisoner = this.prisoner1;
 
   ngOnInit(): void {
-  }
-  onToggle(){
-    // this.dataService.writeData('prisoners.json', this.arr);
+    if (this.generalService.getPrisoner()) {
+      for (let field in this.prisoner) {
+        if (field === 'dateOfTrial' || field === 'from' || field === 'till') {
+          this.prisoner[field] = new Date(this.prisoner[field]);
+        }
+      }
+    } else {
+      this.generalService.getPrisoner();
+    }
   }
 
+  onToggle() {
+    this.router.navigate(['/search']);
+  }
 }

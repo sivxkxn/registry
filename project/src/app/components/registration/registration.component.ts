@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable, of} from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-registration',
@@ -10,19 +10,16 @@ import { Observable, of} from 'rxjs';
 export class RegistrationComponent implements OnInit {
   login!: FormControl;
   password!: FormControl;
+  fullForm!: FormGroup;
   constructor() {}
 
   ngOnInit(): void {
     this.login = new FormControl('', [Validators.required]);
     this.password = new FormControl('', [Validators.required]);
     this.login.valueChanges.subscribe((value) => console.log(value));
+    this.fullForm = new FormGroup({
+      login: new FormControl(),
+      password: new FormControl(),
+    });
   }
-//   function myAsyncValidator(formControl: FormControl):Observable<any|null>{
-//     if(formControl.value.length<3){
-//       return Observable.of({regValidator: {message:"Це поле обов'язкове для заповнення"}});
-//     }
-//     return Observable.of(null);
-//   }
-//   submit() {}
-// }
 }
