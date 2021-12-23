@@ -3,6 +3,7 @@ export interface IUser {
   fullName: string;
   taxNumber: string;
   email: string;
+  login: string;
   password: string;
   role?: RoleEnum;
   organization?: string;

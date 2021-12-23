@@ -56,4 +56,20 @@
       align-items: center;
     }
   }
-  
+  .profile-link {
+    color: #005bbb;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    font-weight: 600;
+    display: block;
+    text-align: right;
+    margin-right: 6rem;
+    margin-top: 3rem;
+    cursor: pointer;
+  }
+  .create{
+    // font-family: "Open Sans", sans-serif;
+    font-size: 0.9rem!important;
+    color: rgb(14, 167, 37)!important;
+  }

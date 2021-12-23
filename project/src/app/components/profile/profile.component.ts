@@ -28,22 +28,25 @@ export class ProfileComponent implements OnInit {
     benefits: Benefits.false,
     disease: 'немає',
   };
-  constructor(
-    private router: Router,
-    private generalService: GeneralService
-  ) {}
+  constructor(private router: Router, private generalService: GeneralService) {}
 
-  prisoner: IPrisoner = this.prisoner1;
+  public prisoner!: IPrisoner;
 
   ngOnInit(): void {
     if (this.generalService.getPrisoner()) {
+      this.prisoner = this.generalService.getPrisoner();
       for (let field in this.prisoner) {
-        if (field === 'dateOfTrial' || field === 'from' || field === 'till') {
+        if (
+          field === 'dateOfBirth' ||
+          field === 'dateOfTrial' ||
+          field === 'from' ||
+          field === 'till'
+        ) {
           this.prisoner[field] = new Date(this.prisoner[field]);
         }
       }
     } else {
-      this.generalService.getPrisoner();
+      this.prisoner = this.prisoner1;
     }
   }
 

@@ -1,63 +1,67 @@
 <div class="registration-panel-wrapper">
     <h2>Редагування відомостей</h2>
-    <div class="registration-panel-main">
-        <div class="panel-column">
-            <p>Повне ім'я</p>
-            <input [value]="prisoner.fullName" type="text">
+    <form [formGroup]="fullForm">
+        <div class="registration-panel-main">
+            <div class="panel-column">
+                <p>Повне ім'я</p>
+                <input [value]="prisoner.fullName" formControlName="fullName" type="text">
 
-            <p>Дата народження</p>
-            <input [value]="prisoner.dateOfBirth.toISOString().substr(0, 10)" type="date">
+                <p>Дата народження</p>
+                <input [value]="prisoner.dateOfBirth" formControlName="dateOfBirth" type="date">
 
-            <p>ІНН</p>
-            <input [value]="prisoner.taxNumber" type="text">
+                <p>ІНН</p>
+                <input [value]="prisoner.taxNumber" formControlName="taxNumber" type="text">
 
-            <p>Реєстраційний номер</p>
-            <input [value]="prisoner.registartionCode" type="text">
+                <p>Реєстраційний номер</p>
+                <input [value]="prisoner.registartionCode" formControlName="registartionCode" type="text">
 
-            <p>Номер справи</p>
-            <input [value]="prisoner.caseNumber" type="text">
+                <p>Номер справи</p>
+                <input [value]="prisoner.caseNumber" formControlName="caseNumber" type="text">
+            </div>
+            <div class="panel-column">
+                <p>Місце реєстрації</p>
+                <input [value]="prisoner.live" formControlName="live" type="text">
+                <p>Стать</p>
+                <input [value]="prisoner.gender" formControlName="gender" name="gender" list="genders">
+                <datalist id="genders">
+                    <option value="Чоловіча">
+                    <option value="Жіноча">
+                </datalist>
+
+                <p>Дата винесення вироку</p>
+                <input [value]="prisoner.dateOfTrial" formControlName="dateOfTrial" type="date">
+
+                <p>Дата початку покарання</p>
+                <input [value]="prisoner.from" formControlName="from" type="date">
+
+                <p>Дата закінчення покарання</p>
+                <input [value]="prisoner.till" formControlName="till" type="date">
+
+            </div>
+            <div class="panel-column">
+                <p>Причина ув'язнення</p>
+                <input [value]="prisoner.reason" formControlName="reason" type="text">
+
+                <p>стаття Кримінального кодексу</p>
+                <input [value]="prisoner.article" formControlName="article" type="text">
+
+                <p>Орган, який здійснив вирок</p>
+                <input [value]="prisoner.trial" formControlName="trial" type="text">
+
+                <p>Пільги</p>
+                <input [value]="prisoner.benefits" formControlName="benefits" list="benefits">
+                <datalist id="benefits">
+                    <option value="Є">
+                    <option value="Немає">
+                </datalist>
+
+                <p>Захворювання</p>
+                <input [value]="prisoner.disease" formControlName="disease" type="text">
+
+            </div>
         </div>
-        <div class="panel-column">
-            <p>Місце реєстрації</p>
-            <input  [value]="prisoner.live" type="text">
-            <p>Стать</p>
-            <input [value]="prisoner.gender" name="genger" list="genders">
-            <datalist id="genders">
-                <option value="Чоловіча">
-                <option value="Жіноча">
-            </datalist>
-
-            <p>Дата винесення вироку</p>
-            <input [value]="prisoner.dateOfTrial.toISOString().substr(0, 10)" type="date">
-
-            <p>Дата початку покарання</p>
-            <input [value]="prisoner.from.toISOString().substr(0, 10)" type="date">
-
-            <p>Дата закінчення покарання</p>
-            <input [value]="prisoner.till.toISOString().substr(0, 10)" type="date">
-
-        </div>
-        <div class="panel-column">
-            <p>Причина ув'язнення</p>
-            <input [value]="prisoner.reason" type="text">
-
-            <p>стаття Кримінального кодексу</p>
-            <input [value]="prisoner.article" type="text">
-
-            <p>Орган, який здійснив вирок</p>
-            <input [value]="prisoner.trial" type="text">
-
-            <p>Пільги</p>
-            <input [value]="prisoner.benefits" list="benefits">
-            <datalist id="benefits">
-                <option value="Є">
-                <option value="Немає">
-            </datalist>
-
-            <p>Захворювання</p>
-            <input [value]="prisoner.disease" type="text">
-
-        </div>
-    </div>
+    </form>
+    <div class="create" *ngIf="isCreate">Редаговано запис</div>
     <button (click)="onSave()">Редагувати</button>
 </div>
+<a class="profile-link" (click)="onToggle()"> Повернутись до усіх відомостей</a>

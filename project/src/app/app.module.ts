@@ -73,6 +73,9 @@ const appRoutes: Routes = [
     MatTableModule,
     MatPaginatorModule,
     HttpClientModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     BrowserModule,
@@ -93,6 +96,9 @@ const appRoutes: Routes = [
     MatTableModule,
     MatPaginatorModule,
     HttpClientModule,
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
     AppComponent,
@@ -107,6 +113,8 @@ const appRoutes: Routes = [
     RegisterPrisonersComponent,
     AdminRegistersComponent,
     AdminRegisterEditComponent,
+    RegisterPanelComponent,
+    AdminPanelComponent
   ],
   bootstrap: [AppComponent, [GeneralService]],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

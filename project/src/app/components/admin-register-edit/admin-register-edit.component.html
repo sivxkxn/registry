@@ -1,32 +1,40 @@
 <div class="registration-panel-wrapper">
     <h2>Редагувати данні реєстратора</h2>
-    <div class="registration-panel-main">
-        <div class="panel-column">
-            <p>Повне ім'я</p>
-            <input [value]="register.fullName" type="text">
+    <form [formGroup]="fullForm">
+        <div class="registration-panel-main">
+            <div class="panel-column">
+                <p>Повне ім'я</p>
+                <input [value]="register.fullName" formControlName="fullName" type="text">
 
-            <p>ІНН</p>
-            <input [value]="register.taxNumber" type="text">
+                <p>ІНН</p>
+                <input [value]="register.taxNumber" formControlName="taxNumber" type="text">
 
-            <p>Пошта</p>
-            <input [value]="register.email" type="text">
+                <p>Пошта</p>
+                <input [value]="register.email" formControlName="email" type="text">
 
 
+            </div>
+            <div class="panel-column">
+                
+                <p>Логін</p>
+                <input [value]="register.login" formControlName="login" type="text">
+
+                <p>Пароль</p>
+                <input [value]="register.password" formControlName="password" type="text">
+
+                <p>Назва організації</p>
+                <input [value]="register.organization" formControlName="organization" type="text">
+
+                <p>Статус</p>
+                <input [value]="register.isActive" formControlName="isActive" name="isActive" list="isActive">
+                <datalist id="isActive">
+                    <option value={{Active.true}}>
+                    <option value={{Active.false}}>
+                </datalist>
+            </div>
         </div>
-        <div class="panel-column">
-            <p>Пароль</p>
-            <input [value]="register.password" type="text">
-
-            <p>Назва організації</p>
-            <input [value]="register.organization" type="text">
-
-            <p>Статус</p>
-            <input [value]="register.isActive" name="isActive" list="isActive">
-            <datalist id="isActive">
-                <option value={{isActive.true}}>
-                <option value={{isActive.false}}>
-            </datalist>
-        </div>
-    </div>
-<button (click)="onSave()">Зберігти</button>
+    </form>
+    <div class="create" *ngIf="isCreate">Редаговано запис</div>
+    <button (click)="onSave()">Зберігти</button>
 </div>
+<a class="profile-link" (click)="onToggle()"> Повернутись до списку реєстраторів</a>

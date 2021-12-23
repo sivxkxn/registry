@@ -1,32 +1,39 @@
 <div class="registration-panel-wrapper">
-    <h2>Створити реєстратора</h2>
-    <div class="registration-panel-main">
-        <div class="panel-column">
-            <p>Повне ім'я</p>
-            <input type="text">
+    <h2>Створити данні реєстратора</h2>
+    <form [formGroup]="fullForm">
+        <div class="registration-panel-main">
+            <div class="panel-column">
+                <p>Повне ім'я</p>
+                <input formControlName="fullName" type="text">
 
-            <p>ІНН</p>
-            <input type="text">
+                <p>ІНН</p>
+                <input formControlName="taxNumber" type="text">
 
-            <p>Пошта</p>
-            <input type="text">
+                <p>Пошта</p>
+                <input  formControlName="email" type="text">
 
 
+            </div>
+            <div class="panel-column">
+                <p>Логін</p>
+                <input formControlName="login" type="text">
+
+                <p>Пароль</p>
+                <input formControlName="password" type="text">
+
+                <p>Назва організації</p>
+                <input formControlName="organization" type="text">
+
+                <p>Статус</p>
+                <input  formControlName="isActive" name="isActive" list="isActive">
+                <datalist id="isActive">
+                    <option value={{Active.true}}>
+                    <option value={{Active.false}}>
+                </datalist>
+            </div>
         </div>
-        <div class="panel-column">
-            <p>Пароль</p>
-            <input type="text">
-
-            <p>Назва організації</p>
-            <input type="text">
-
-            <p>Статус</p>
-            <input name="isActive" list="isActive">
-            <datalist id="isActive">
-                <option value={{isActive.true}}>
-                <option value={{isActive.false}}>
-            </datalist>
-        </div>
-    </div>
-<button (click)="onSave()">Створити</button>
+    </form>
+    <div class="create" *ngIf="isCreate">Створено запис</div>
+    <button (click)="onSave()">Зберігти</button>
 </div>
+<a class="profile-link" (click)="onToggle()"> Повернутись до списку реєстраторів</a>

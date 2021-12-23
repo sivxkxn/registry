@@ -37,21 +37,33 @@
     color: white;
     font-family: "Open Sans", sans-serif;
     font-size: 0.7rem;
-    line-height: 1.5rem;
+    line-height: 1rem;
     border-radius: 10px;
-    margin-left: 1rem;
-    margin-top: auto;
-    // border: 0.5px;
+    // margin-left: 1rem;
+    margin: 0.2rem;
+    // width: 3rem;
   }
-  .delete-btn {
+  .activate-btn {
     background-color: rgb(231, 86, 86);
     color: white;
     font-family: "Open Sans", sans-serif;
     font-size: 0.7rem;
-    line-height: 1.5rem;
+    line-height: 1rem;
     border-radius: 10px;
-  //   margin-right: 1rem;
-    margin-top: auto;
-
+    margin:  0.2rem;
+    // width: 3rem;
   }
-  
+  .deactivate-btn{
+    background-color: black;
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.7rem;
+    line-height: 1rem;
+    border-radius: 10px;
+    margin:  0.2rem;
+  }
+  .btn-cell{
+    // display: flex;
+    // flex-direction: column;
+    // width: 3rem;
+  }

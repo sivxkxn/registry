@@ -1,63 +1,82 @@
 <div class="registration-panel-wrapper">
-    <h2>Створити відомості про особу</h2>
-    <div class="registration-panel-main">
-        <div class="panel-column">
-            <p>Повне ім'я</p>
-            <input type="text">
+    <h2>Створення відомостей відомостей</h2>
+    <form [formGroup]="formForNewPrisoner">
+        <div class="registration-panel-main">
+            <div class="panel-column">
+                <p>Повне ім'я</p>
+                <input  formControlName="fullName" type="text" >
+                <!-- <p class="validation" *ngIf="fullName.invalid">*Прізвище, ім'я, по-батькові</p> -->
 
-            <p>Дата народження</p>
-            <input type="date">
+                <p>Дата народження</p>
+                <input  formControlName="dateOfBirth" type="date">
+                <!-- <p class="validation" >*Не може бути пізніше, ніж зараз</p> -->
 
-            <p>ІНН</p>
-            <input type="text">
+                <p>ІНН</p>
+                <input  formControlName="taxNumber" type="text">
+                <!-- <p class="validation">*Повинно бути 10 цифр</p> -->
 
-            <p>Реєстраційний номер</p>
-            <input type="text">
+                <p>Реєстраційний номер</p>
+                <input  formControlName="registartionCode" type="text">
+                <!-- <p class="validation">*Повинно бути 10 цифр</p> -->
 
-            <p>Номер справи</p>
-            <input type="text">
+                <p>Номер справи</p>
+                <input  formControlName="caseNumber" type="text">
+                <!-- <p class="validation">*У форматі, наприклад: 320/6355/18</p> -->
+            </div>
+            <div class="panel-column">
+                <p>Місце реєстрації</p>
+                <input  formControlName="live" type="text">
+                <!-- <p class="validation">*Текстовий формат</p> -->
+
+                <p>Стать</p>
+                <input formControlName="gender" name="gender" list="genders">
+                <datalist id="genders">
+                    <option value="Чоловіча">
+                    <option value="Жіноча">
+                </datalist>
+                <!-- <p class="validation">*Чоловік чи жінка</p> -->
+
+                <p>Дата винесення вироку</p>
+                <input  formControlName="dateOfTrial" type="date">
+                <!-- <p class="validation">*Не може бути пізніше, ніж зараз</p> -->
+
+                <p>Дата початку покарання</p>
+                <input  formControlName="from" type="date">
+                <!-- <p class="validation">*Не може бути пізніше, ніж зараз</p> -->
+
+                <p>Дата закінчення покарання</p>
+                <input  formControlName="till" type="date">
+                <!-- <p class="validation">*Не може бути пізніше, ніж зараз</p> -->
+
+            </div>
+            <div class="panel-column">
+                <p>Причина ув'язнення</p>
+                <input  formControlName="reason" type="text">
+                <!-- <p class="validation">*Текстовий формат</p> -->
+
+                <p>стаття Кримінального кодексу</p>
+                <input  formControlName="article" type="text">
+                <!-- <p class="validation">*Трьох чи чотирьох значне число </p> -->
+
+                <p>Орган, який здійснив вирок</p>
+                <input  formControlName="trial" type="text">
+                <!-- <p class="validation">*Текстовий формат</p> -->
+
+                <p>Пільги</p>
+                <input  formControlName="benefits" list="benefits">
+                <datalist id="benefits">
+                    <option value="Є">
+                    <option value="Немає">
+                </datalist>
+                <!-- <p class="validation">*Є чи немає</p> -->
+
+                <p>Захворювання</p>
+                <input  formControlName="disease" type="text">
+                <!-- <p class="validation">*Текстовий формат</p> -->
+
+            </div>
         </div>
-        <div class="panel-column">
-            <p>Місце реєстрації</p>
-            <input type="text">
-            <p>Стать</p>
-            <input name="genger" list="genders">
-            <datalist id="genders">
-                <option value="Чоловіча">
-                <option value="Жіноча">
-            </datalist>
-
-            <p>Дата винесення вироку</p>
-            <input type="date">
-
-            <p>Дата початку покарання</p>
-            <input type="date">
-
-            <p>Дата закінчення покарання</p>
-            <input type="date">
-
-        </div>
-        <div class="panel-column">
-            <p>Причина ув'язнення</p>
-            <input type="text">
-
-            <p>стаття Кримінального кодексу</p>
-            <input type="text">
-
-            <p>Орган, який здійснив вирок</p>
-            <input type="text">
-
-            <p>Пільги</p>
-            <input list="benefits">
-            <datalist id="benefits">
-                <option value="Є">
-                <option value="Немає">
-            </datalist>
-
-            <p>Захворювання (необов'язкове)</p>
-            <input type="text">
-
-        </div>
-    </div>
+    </form>
+       <div class="create" *ngIf="isCreate">Створено запис</div>
     <button (click)="onSave()">Створити</button>
 </div>

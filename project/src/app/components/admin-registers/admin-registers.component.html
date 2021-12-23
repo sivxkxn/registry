@@ -15,6 +15,11 @@
                 <th mat-header-cell *matHeaderCellDef> ІНН </th>
                 <td mat-cell *matCellDef="let register"> {{register.taxNumber}} </td>
             </ng-container>
+            <ng-container matColumnDef="login">
+                <th mat-header-cell *matHeaderCellDef> Логін </th>
+                <td mat-cell *matCellDef="let register"> {{register.login}} </td>
+            </ng-container>
+
             <ng-container matColumnDef="password">
                 <th mat-header-cell *matHeaderCellDef> Пароль </th>
                 <td mat-cell *matCellDef="let register"> {{register.password}} </td>
@@ -32,7 +37,7 @@
 
             <ng-container matColumnDef="buttons">
                 <th mat-header-cell *matHeaderCellDef> Дії</th>
-                <td mat-cell *matCellDef="let register"> <button (click)="onDelete(register)" class="delete-btn">Активовано</button> <button (click)="onEdit()" class="edit-btn">Редагувати</button></td>
+                <td mat-cell *matCellDef="let register" class="btn-cell"> <button (click)="onActivate(register)" *ngIf="register.isActive==='Активний'" class="activate-btn">Активовано</button> <button (click)="onDeactivate(register)" *ngIf="register.isActive ==='Деактивований'" class="deactivate-btn">Деактивований</button> <button (click)="onEdit(register)" class="edit-btn">Редагувати</button></td>
             </ng-container>
             
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

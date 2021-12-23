@@ -1,9 +1,11 @@
 import { Active, IUser } from 'src/interfaces';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
+import { GeneralService } from 'src/app/services/general.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-admin-registers',
@@ -11,44 +13,56 @@ import { Router } from '@angular/router';
   styleUrls: ['./admin-registers.component.scss']
 })
 export class AdminRegistersComponent implements OnInit {
+  // public register: IUser = {
+  //   id: 1,
+  //   fullName: 'Василь Петрович Кулулініч',
+  //   email: 'kulinich@gmail.com',
+  //   taxNumber:'768956789',
+  //   password: 'kul999',
+  //   organization: 'Vicikhovsky inc',
+  //   isActive:Active.true,
+  //   login:'Vasya'
+  // };
+  constructor(private generalService:GeneralService, private userService:UsersService, private router:Router) {}
+  public ELEMENT_DATA: Array<IUser> = [];
+  ngOnInit(): void {
+    this.userService.getUsers().subscribe((arr) => {
+      arr.forEach((user: IUser) => this.ELEMENT_DATA.push(user));
+      this.dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
+      this.dataSource.paginator = this.paginator;
+    });
+  }
 
-  public register: IUser = {
-    id: 1,
-    fullName: 'Василь Петрович Кулулініч',
-    email: 'kulinich@gmail.com',
-    taxNumber:'768956789',
-    password: 'kul999',
-    organization: 'Vicikhovsky inc',
-    isActive:Active.true
-  };
-  constructor() {}
-
-  ngOnInit(): void {}
-  public ELEMENT_DATA = [this.register];
   displayedColumns: string[] = [
     'fullName',
     'email',
     'taxNumber',
+    'login',
     'password',
     'organization',
     'isActive',
     'buttons'
   ];
-  // displayedColumns: string[] =Object.keys(this.prisoner1);
-  dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
+  dataSource = new MatTableDataSource<IUser>(this.ELEMENT_DATA);
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
-  router!: Router;
+
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
-  // ngOnInit(): void {}
-  onDelete(register: IUser) {
-    // this.router.navigate(['profile']);
+
+  onActivate(register: IUser) {
+    register.isActive = Active.false;
+    this.userService.updateUser(register);
   }
-  onEdit() {
-    // this.router.navigate(['register-edit']);
+  onDeactivate(register: IUser){
+    register.isActive = Active.true;
+    this.userService.updateUser(register);
   }
-}
+  onEdit(register:IUser) {
+    this.generalService.setRegisterEdit(register);
+    this.router.navigate(['admin-register-edit']);
+  }
+} 

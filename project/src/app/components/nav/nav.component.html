@@ -1,5 +1,22 @@
-<nav class="navigation">
+<nav *ngIf="!generalService.getUser()" class="navigation">
     <a routerLink="/">Головна</a>
     <a routerLink="/search">Пошук</a>
     <a routerLink="/registration">Вхід</a>
+</nav>
+
+<nav *ngIf="generalService.getUser()?.login === 'Julia'" class="navigation">
+    <p>Адміністратор: {{generalService.getUser().login}}</p>
+    <a routerLink="/">Головна</a>
+    <a routerLink="/admin-registers">Реєстратори</a>
+    <a routerLink="/admin-panel">Створити реєстратора</a>
+    <a routerLink="/register-log">Історія</a>
+    <a (click)="onExit()" routerLink="/">Вихід</a>
+</nav>
+
+<nav *ngIf="generalService.getUser() && generalService.getUser()?.login!=='Julia'" class="navigation">
+    <p>Реєстратор: {{generalService.getUser().fullName}}</p>
+    <a routerLink="/">Головна</a>
+    <a routerLink="/register-prisoners">Засуджені особи</a>
+    <a routerLink="/register-panel">Створити відомості</a>
+    <a (click)="onExit()" routerLink="/">Вихід</a>
 </nav>

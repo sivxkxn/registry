@@ -2,13 +2,10 @@
 <div class="search-wrapper">
     <div class="search-main">
         <div class="side-search-bar">
-            <form>
-                <input class="search-input" placeholder="Прізвище" type="text">
-                <input class="search-input" placeholder="Ім'я" type="text">
-                <input class="search-input" placeholder="По-батькові" type="text">
-                <input class="search-input" placeholder="Податковий номер" type="number">
-                <input class="search-input" placeholder="Номер справи" type="number">
-                <button mat-flat-button class="search-button">Пошук</button>
+            <form [formGroup]="fullForm">
+                <input class="search-input" formControlName="fullName" placeholder="ПІБ" type="text">
+                <!-- <input class="search-input" formControlName="taxNumber" placeholder="Податковий номер" type="number"> -->
+                <!-- <input class="search-input" formControlName="caseNumber" placeholder="Номер справи" type="number"> -->
             </form>
         </div>
         <div class="result-box">

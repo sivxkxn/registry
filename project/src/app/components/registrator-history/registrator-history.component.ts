@@ -22,7 +22,7 @@ export class RegistratorHistoryComponent implements OnInit {
     oldValue: 'Крадіжка',
     newValue: 'Крадіжка у крупних маштабах',
   };
-  public ELEMENT_DATA = [this.logData];
+  public ELEMENT_DATA = [this.logData, this.logData];
   constructor() {}
   displayedColumns: string[] = [
     'registerName',
